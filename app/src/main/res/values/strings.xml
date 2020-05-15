@@ -3,4 +3,8 @@
     <string name="button_clear">Очистить</string>
     <string name="textNameUser">Имя пользователя</string>
     <string name="textEmailUser">Электронная почта</string>
+    <string name="resultError">Имя пользователя или электронная почта не может быть пустым!</string>
+    <string name="resultDone">Подписка на рассылку успешно оформлена для пользователя: %1$s на электронный адрес: %2$s .</string>
+    <string name="hint_name_user">Введите имя пользователя</string>
+    <string name="hint_email_user">Введите электронную почту</string>
 </resources>

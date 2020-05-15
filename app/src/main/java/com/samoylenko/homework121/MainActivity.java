@@ -5,50 +5,50 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button_ok;
-    private Button button_clear;
-    private TextView input_name;
-    private TextView input_email;
-    private TextView text_result;
+    private Button buttonOk;
+    private Button buttonClear;
+    private EditText inputName;
+    private EditText inputEmail;
+    private TextView textResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button_clear = findViewById(R.id.button_clear);
-        button_ok = findViewById(R.id.button_ok);
+        buttonClear = findViewById(R.id.buttonClear);
+        buttonOk = findViewById(R.id.buttonOk);
 
-        button_clear.setOnClickListener(new View.OnClickListener() {
+        buttonClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input_email.setText("");
-                input_name.setText("");
-                text_result.setText("");
+                inputEmail.getText().clear();
+                inputName.getText().clear();
+                textResult.setText("");
             }
         });
 
-        button_ok.setOnClickListener(new View.OnClickListener() {
+        buttonOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = input_name.getText().toString();
-                String email = input_email.getText().toString();
-                if (username.equals("") | email.equals("")){
-                    text_result.setText("Имя пользователя или электронная почта не может быть пустым!");
+                String username = inputName.getText().toString();
+                String email = inputEmail.getText().toString();
+                if (username.isEmpty() | email.isEmpty()){
+                    textResult.setText(R.string.resultError);
                 }else {
-                    text_result.setText("Подписка на рассылку успешно оформлена для пользователя: " + username + " на электронный адрес: "+ email);
+                    String text = getString(R.string.resultDone, username, email);
+                    textResult.setText(text);
                 }
             }
         });
 
-        input_name = findViewById(R.id.editText_name);
-        input_email = findViewById(R.id.editText_email);
-        text_result = findViewById(R.id.text_result);
+        inputName = findViewById(R.id.editTextName);
+        inputEmail = findViewById(R.id.editTextEmail);
+        textResult = findViewById(R.id.textResult);
     }
 }
